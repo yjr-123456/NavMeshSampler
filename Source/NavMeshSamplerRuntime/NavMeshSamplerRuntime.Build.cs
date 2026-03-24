@@ -23,8 +23,7 @@ public class NavMeshSamplerRuntime : ModuleRules
 		PublicDependencyModuleNames.AddRange(
 			new string[]
 			{
-				"Core",
-				"ExportNavRuntime"
+				"Core"
 			}
 		);
 

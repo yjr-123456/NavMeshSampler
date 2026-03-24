@@ -8,9 +8,6 @@
 #include "NavMeshSamplerTypes.h"
 #include "FlibNavMeshSampler.generated.h"
 
-class UdtNavMeshWrapper;
-class FNavMeshPointSampler;
-
 /**
  * Blueprint function library for NavMesh sampling operations
  */
@@ -29,16 +26,6 @@ public:
 	 */
 	UFUNCTION(BlueprintCallable, Category = "NavMesh Sampler")
 	static bool SamplePointsFromNavMeshFile(const FString& NavMeshBinPath, const FNavMeshSamplerConfig& Config, FNavMeshSamplingResult& OutResult);
-
-	/**
-	 * Sample points from a NavMesh wrapper object
-	 * @param NavMeshWrapper The loaded NavMesh wrapper
-	 * @param Config Sampling configuration
-	 * @param OutResult Result containing sampled points
-	 * @return True if sampling was successful
-	 */
-	UFUNCTION(BlueprintCallable, Category = "NavMesh Sampler")
-	static bool SamplePointsFromNavMeshWrapper(UdtNavMeshWrapper* NavMeshWrapper, const FNavMeshSamplerConfig& Config, FNavMeshSamplingResult& OutResult);
 
 	/**
 	 * Sample points within a specific region

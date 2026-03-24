@@ -8,8 +8,6 @@
 #include "Detour/DetourNavMesh.h"
 #include "Detour/DetourNavMeshQuery.h"
 
-class UdtNavMeshWrapper;
-
 /**
  * NavMesh Point Sampler
  * Performs grid-based sampling on a NavMesh to find candidate placement points

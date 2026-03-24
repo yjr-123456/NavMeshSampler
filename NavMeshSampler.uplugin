@@ -13,12 +13,6 @@
 	"CanContainContent": false,
 	"IsBetaVersion": false,
 	"Installed": false,
-	"Plugins": [
-		{
-			"Name": "ExportNav",
-			"Enabled": true
-		}
-	],
 	"Modules": [
 		{
 			"Name": "NavMeshSamplerRuntime",

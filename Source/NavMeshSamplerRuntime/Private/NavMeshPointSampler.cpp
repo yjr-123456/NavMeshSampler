@@ -3,7 +3,6 @@
 
 #include "NavMeshPointSampler.h"
 #include "NavMeshSamplerRuntime.h"
-#include "dtNavMeshWrapper.h"
 #include "Detour/DetourStatus.h"
 #include "Detour/DetourAlloc.h"
 #include "Detour/DetourNavMesh.h"

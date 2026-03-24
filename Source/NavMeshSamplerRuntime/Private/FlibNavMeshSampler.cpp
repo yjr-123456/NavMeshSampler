@@ -4,7 +4,6 @@
 #include "FlibNavMeshSampler.h"
 #include "NavMeshPointSampler.h"
 #include "NavMeshSamplerRuntime.h"
-#include "dtNavMeshWrapper.h"
 #include "Json.h"
 #include "Misc/Paths.h"
 #include "HAL/PlatformFileManager.h"
@@ -18,24 +17,6 @@ bool UFlibNavMeshSampler::SamplePointsFromNavMeshFile(const FString& NavMeshBinP
 	if (!Sampler.Initialize(NavMeshBinPath))
 	{
 		UE_LOG(LogNavMeshSampler, Error, TEXT("Failed to initialize sampler for: %s"), *NavMeshBinPath);
-		return false;
-	}
-
-	return Sampler.SampleGridPoints(Config, OutResult);
-}
-
-bool UFlibNavMeshSampler::SamplePointsFromNavMeshWrapper(UdtNavMeshWrapper* NavMeshWrapper, const FNavMeshSamplerConfig& Config, FNavMeshSamplingResult& OutResult)
-{
-	if (!NavMeshWrapper || !NavMeshWrapper->IsAvailableNavData())
-	{
-		UE_LOG(LogNavMeshSampler, Error, TEXT("Invalid NavMesh wrapper"));
-		return false;
-	}
-
-	FNavMeshPointSampler Sampler;
-	if (!Sampler.Initialize(NavMeshWrapper->GetNavData()))
-	{
-		UE_LOG(LogNavMeshSampler, Error, TEXT("Failed to initialize sampler from wrapper"));
 		return false;
 	}
 
