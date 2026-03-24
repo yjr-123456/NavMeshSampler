@@ -1,0 +1,8 @@
+{
+	"BuildId": "47537391",
+	"Modules": 
+	{
+		"NavMeshSamplerEditor": "UnrealEditor-NavMeshSamplerEditor.dll",
+		"NavMeshSamplerRuntime": "UnrealEditor-NavMeshSamplerRuntime.dll"
+	}
+}

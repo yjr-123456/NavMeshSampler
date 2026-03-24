@@ -2,6 +2,8 @@
 
 An Unreal Engine 5 plugin for sampling placement candidate points from navigation mesh data.
 
+![Overview](imgs/overview.png)
+
 ## Features
 
 - **Grid-based NavMesh sampling** - Extract valid placement points from NavMesh
@@ -27,16 +29,16 @@ An Unreal Engine 5 plugin for sampling placement candidate points from navigatio
 
 In Unreal Editor: **Window > NavMesh Sampler**
 
-### 2. Configure Parameters
+### 2. Select NavMesh File
+
+Click **Browse...** and select a `.bin` NavMesh file.
+
+### 3. Configure Parameters
 
 | Parameter | Description | Default |
 |-----------|-------------|---------|
 | Grid Spacing | Distance between sample points (cm) | 100 |
 | Min Clear Height | Minimum vertical clearance for world filtering (cm) | 200 |
-
-### 3. Select NavMesh File
-
-Click **Browse...** and select a `.bin` NavMesh file (exported via ExportNav plugin or similar tools).
 
 ### 4. Sample Points
 
@@ -136,4 +138,3 @@ MIT License
 ## Acknowledgments
 
 - Uses Recast/Detour navigation library
-- Inspired by the ExportNav plugin architecture
