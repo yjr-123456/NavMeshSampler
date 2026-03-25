@@ -15,6 +15,9 @@ public:
 
 	void Construct(const FArguments& InArgs);
 
+	// Destructor - clears visualization when widget is closed
+	virtual ~SNavMeshSamplerWidget();
+
 private:
 	// UI callbacks
 	FReply OnBrowseNavMeshFile();
@@ -31,6 +34,9 @@ private:
 	// State update
 	void UpdateStatusText();
 	void UpdateResultDisplay();
+
+	// Clear all visualization actors in the world
+	void ClearVisualizationActors();
 
 private:
 	// Current state

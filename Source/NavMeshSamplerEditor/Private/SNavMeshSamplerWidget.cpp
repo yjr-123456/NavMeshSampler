@@ -25,6 +25,12 @@
 
 #define LOCTEXT_NAMESPACE "NavMeshSamplerUI"
 
+SNavMeshSamplerWidget::~SNavMeshSamplerWidget()
+{
+	// Clear visualization when widget is closed
+	ClearVisualizationActors();
+}
+
 void SNavMeshSamplerWidget::Construct(const FArguments& InArgs)
 {
 	ChildSlot
@@ -414,6 +420,10 @@ FReply SNavMeshSamplerWidget::OnExportJSONClicked()
 FReply SNavMeshSamplerWidget::OnClearPointsClicked()
 {
 	SamplingResult.Reset();
+
+	// Clear all visualization actors (flushes debug lines)
+	ClearVisualizationActors();
+
 	UpdateResultDisplay();
 	StatusTextBlock->SetText(LOCTEXT("PointsCleared", "Points cleared"));
 	StatusTextBlock->SetColorAndOpacity(FLinearColor::Green);
@@ -474,6 +484,27 @@ void SNavMeshSamplerWidget::OnGridSpacingChanged(float NewValue)
 void SNavMeshSamplerWidget::OnMinClearHeightChanged(float NewValue)
 {
 	WorldFilterConfig.MinClearHeightAbove = NewValue;
+}
+
+void SNavMeshSamplerWidget::ClearVisualizationActors()
+{
+	if (GEditor)
+	{
+		UWorld* World = GEditor->GetEditorWorldContext().World();
+		if (World)
+		{
+			// Find and clear all NavMeshSampler actors
+			TArray<AActor*> Actors;
+			UGameplayStatics::GetAllActorsOfClass(World, ANavMeshSamplerActor::StaticClass(), Actors);
+			for (AActor* Actor : Actors)
+			{
+				if (ANavMeshSamplerActor* SamplerActor = Cast<ANavMeshSamplerActor>(Actor))
+				{
+					SamplerActor->ClearPoints();
+				}
+			}
+		}
+	}
 }
 
 void SNavMeshSamplerWidget::UpdateStatusText()

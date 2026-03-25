@@ -52,6 +52,12 @@ void ANavMeshSamplerActor::SetSamplingResult(const FNavMeshSamplingResult& Resul
 void ANavMeshSamplerActor::ClearPoints()
 {
 	SamplingResult.Reset();
+
+	// Clear persistent debug drawings
+	if (UWorld* World = GetWorld())
+	{
+		FlushPersistentDebugLines(World);
+	}
 }
 
 void ANavMeshSamplerActor::DrawVisualization()
